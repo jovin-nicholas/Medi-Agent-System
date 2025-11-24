@@ -1,78 +1,43 @@
-# Agent Development Kit (ADK) Samples
+# Medi-Agent System
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+**Medi-Agent System** is an AI-powered, multi-agent system for symptom analysis and doctor discovery. This project helps users describe their symptoms in natural language and receive recommendations for relevant medical specialists.
 
-<img src="https://github.com/google/adk-docs/blob/main/docs/assets/agent-development-kit.png" alt="Agent Development Kit Logo" width="150">
+## ✨ Features
 
-Welcome to the ADK Sample Agents repository! This collection provides ready-to-use agents built on top of the [Agent Development Kit](https://google.github.io/adk-docs/), designed to accelerate your development process. These agents cover a range of common use cases and complexities, from simple conversational bots to complex multi-agent workflows.
+This project demonstrates several key concepts from the Agent Development Kit:
 
-## ✨ Getting Started
-This repo contains ADK sample agents for **Python**, **Go** and **Java.** Navigate to the **[Python](python/)**, **[Go](go/)**, and **[Java](java/)** subfolders to see language-specific setup instructions, and learn more about the available sample agents.
+*   **Multi-Agent System**: A `RootAgent` orchestrates multiple specialized agents to handle a complex task:
+    *   `SymptomExtractorAgent`: Identifies medical symptoms from the user's input.
+    *   `SpecialityRecommenderAgent`: Suggests a medical specialty based on the extracted symptoms.
+    *   `DoctorRecommenderAgent`: Finds and recommends doctors based on the suggested specialty.
+    *   `ChatAgent`: Handles general conversation.
+*   **LLM-Powered Agents**: Leverages Google's Gemini models to understand user queries and drive the conversation.
+*   **Custom Tools**: The `DoctorRecommenderAgent` uses a custom tool to query the NPPES (National Plan and Provider Enumeration System) API for real-world healthcare provider data.
+*   **Session & State Management**: Utilizes `InMemorySessionService` to maintain conversational context and manage the state of the interaction.
+*   **Agent Deployment**: The project is a web-based application built with FastAPI and served with Uvicorn, allowing users to interact with the agent through a browser.
 
-> [!IMPORTANT]
-> The agents in this repository are built using the **Agent Development Kit (ADK)**. Before you can run any of the samples, you must have the ADK installed. For instructions, please refer to the [**ADK Installation Guide**](https://google.github.io/adk-docs/get-started).
+## 🚀 Getting Started
 
-To learn more, check out the [ADK Documentation](https://google.github.io/adk-docs/), and the GitHub repositories for each language:
-- [ADK Python](https://github.com/google/adk-python)
-- [ADK Go](https://github.com/google/adk-go)
-- [ADK Java](https://github.com/google/adk-java)
+Follow these steps to set up and run the agent:
 
-## 🌳 Repository Structure
-```bash
-├── go
-│   ├── agents
-│   │   ├── llm-auditor
-│   └── README.md
-├── java
-│   ├── agents
-│   │   ├── software-bug-assistant
-│   │   └── time-series-forecasting
-│   └── README.md
-├── python
-│   ├── agents
-│   │   ├── academic-research
-│   │   ├── antom-payment
-│   │   ├── blog-writer
-│   │   ├── brand-search-optimization
-│   │   ├── camel
-│   │   ├── customer-service
-│   │   ├── data-engineering
-│   │   ├── data-science
-│   │   ├── financial-advisor
-│   │   ├── fomc-research
-│   │   ├── deep-search
-│   │   ├── google-trends-agent
-│   │   ├── image-scoring
-│   │   ├── llm-auditor
-│   │   ├── machine-learning-engineering
-│   │   ├── marketing-agency
-│   │   ├── medical-pre-authorization
-│   │   ├── personalized-shopping
-│   │   ├── RAG
-│   │   ├── realtime-conversational-agent
-│   │   ├── safety-plugins
-│   │   ├── short-movie-agents
-│   │   ├── software-bug-assistant
-│   │   ├── travel-concierge
-│   │   └── README.md
-│   └── README.md
-└── README.md
-```
+1.  **Navigate to the agent directory:**
+    ```bash
+    cd python/agents/bidi-demo
+    ```
 
-## ℹ️ Getting help
+2.  **Install Dependencies:**
+    Install the required dependencies with:
+    ```bash
+    pip install -e .
+    ```
 
-If you have any questions or if you found any problems with this repository, please report through [GitHub issues](https://github.com/google/adk-samples/issues).
+3.  **Run the Application:**
+    Navigate to the `app` directory and use `uvicorn` to start the server:
+    ```bash
+    cd app
+    uvicorn main:app --reload --host 0.0.0.0 --port 8000
+    ```
 
-## 🤝 Contributing
+3.  **Access the Web Interface:**
+    Open your web browser and go to `http://localhost:8000`. You can now interact with the Medi-Agent System.
 
-We welcome contributions from the community! Whether it's bug reports, feature requests, documentation improvements, or code contributions, please see our [**Contributing Guidelines**](https://github.com/google/adk-samples/blob/main/CONTRIBUTING.md) to get started.
-
-## 📄 License
-
-This project is licensed under the Apache 2.0 License - see the [LICENSE](https://github.com/google/adk-samples/blob/main/LICENSE) file for details.
-
-## Disclaimers
-
-This is not an officially supported Google product. This project is not eligible for the [Google Open Source Software Vulnerability Rewards Program](https://bughunters.google.com/open-source-security).
-
-This project is intended for demonstration purposes only. It is not intended for use in a production environment.
