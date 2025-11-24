@@ -16,7 +16,7 @@ from google.adk.agents.run_config import RunConfig, StreamingMode
 from google.adk.agents.live_request_queue import LiveRequestQueue
 from google.adk.sessions import InMemorySessionService
 from google.genai import types
-from google_search_agent.agent import agent
+from root_agent.agent import root_agent as root_agent
 
 # Configure logging
 logging.basicConfig(
@@ -49,7 +49,7 @@ session_service = InMemorySessionService()
 # Define your runner
 runner = Runner(
     app_name=APP_NAME,
-    agent=agent,
+    agent=root_agent,
     session_service=session_service
 )
 
@@ -80,7 +80,7 @@ async def websocket_endpoint(websocket: WebSocket, user_id: str, session_id: str
     # Automatically determine response modality based on model architecture
     # Native audio models (containing "native-audio" in name) ONLY support AUDIO response modality
     # Half-cascade models support both TEXT and AUDIO, we default to TEXT for better performance
-    model_name = agent.model
+    model_name = root_agent.model
     is_native_audio = "native-audio" in model_name.lower()
 
     if is_native_audio:
