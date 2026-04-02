@@ -41,3 +41,8 @@ Follow these steps to set up and run the agent:
 3.  **Access the Web Interface:**
     Open your web browser and go to `http://localhost:8000`. You can now interact with the Medi-Agent System.
 
+## 📷 Screenshots
+
+<img width="1080" height="606" alt="image" src="https://github.com/user-attachments/assets/08ea2f9e-6d64-41c6-9956-9632ffe19ca1" />
+
+<img width="1080" height="606" alt="image" src="https://github.com/user-attachments/assets/3be97db5-c43f-495f-9928-8b14d8b11000" />
